@@ -16,4 +16,4 @@ A high-end, aesthetic frontend interface for LuminaScents, featuring a responsiv
 
 ## Quick Start
 1. Clone this repository.
-2. Open `WT-proj.html` in your browser to view the homepage.
+2. Open `index.html` in your browser to view the homepage.
