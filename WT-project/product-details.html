@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuminaScents | Product Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600&family=Tenor+Sans&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-creme: #fdfaf7;
+            --nude-blush: #efe3da; 
+            --muted-brown: #4a3b33;
+            --dusk-rose: #8c5e5e;
+            --white: #ffffff;
+            --border-light: rgba(74, 59, 51, 0.15);
+        }
+
+        body {
+            font-family: 'Tenor Sans', sans-serif;
+            background-color: var(--bg-creme);
+            color: var(--muted-brown);
+            margin: 0;
+            padding: 20px;
+            border: 12px solid var(--white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .back-nav { width: 100%; max-width: 1100px; margin-bottom: 20px; }
+        .back-nav a { text-decoration: none; color: var(--muted-brown); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .product-container {
+            max-width: 1100px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            margin-top: 40px;
+            opacity: 0;
+            animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.2s;
+        }
+
+        .image-viewport {
+            width: 100%;
+            aspect-ratio: 1/1.2;
+            background-color: var(--nude-blush);
+            background-size: cover;
+            background-position: center;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .info-panel h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        .price-tag {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: var(--dusk-rose);
+        }
+
+        .desc-text {
+            line-height: 1.8;
+            margin-bottom: 40px;
+            font-size: 16px;
+            border-left: 2px solid var(--nude-blush);
+            padding-left: 20px;
+        }
+
+        .button-group { display: flex; gap: 15px; margin-top: 30px; }
+
+        .action-btn {
+            background: var(--muted-brown);
+            color: white;
+            padding: 18px 45px;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 13px;
+            transition: all 0.4s ease;
+        }
+
+        .action-btn:hover { background: var(--dusk-rose); letter-spacing: 5px; }
+
+        .secondary-btn {
+            background: transparent;
+            color: var(--muted-brown);
+            border: 1px solid var(--muted-brown);
+            padding: 18px 35px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 12px;
+            transition: all 0.4s ease;
+        }
+
+        .secondary-btn:hover { background: var(--nude-blush); border-color: var(--dusk-rose); }
+    </style>
+</head>
+<body>
+
+    <nav class="back-nav">
+        <a href="index.html">← Collections</a>
+    </nav>
+
+    <div class="product-container" id="main-content">
+        <div id="display-img" class="image-viewport"></div>
+
+        <div class="info-panel">
+            <h1 id="display-title">PRODUCT</h1>
+            <div id="display-price" class="price-tag"></div>
+            
+            <div style="margin-bottom: 25px;">
+                <label for="quantity" style="font-size: 11px; letter-spacing: 2px; display: block; margin-bottom: 10px;">QUANTITY</label>
+                <!-- Max limit set to 10 -->
+                <input type="number" id="quantity" value="1" min="1" max="10" 
+                       style="padding: 12px; border: 1px solid var(--border-light); width: 60px; font-family: 'Tenor Sans';">
+                <span style="font-size: 11px; margin-left: 10px; color: #888;">(Max 10 units)</span>
+            </div>
+
+            <p id="display-desc" class="desc-text"></p>
+            
+            <div class="button-group">
+                <button class="action-btn" onclick="handleAddToBag()">Add to Bag</button>
+                <button class="secondary-btn" onclick="goToOrderForm()">Proceed to Purchase</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+    // Enhanced Long Descriptions
+    const productData = {
+        "bow-pillar": { 
+            title: "Bow Pillar Candle", price: "Rs. 1,500", img: "bow pillar.jpg", 
+            desc: "The Bow Pillar Candle is a masterpiece of sculptural wax art, designed to be the centerpiece of your minimalist decor. Hand-poured in Pakistan using a premium soy wax blend, it features an intricate, realistic ribbon texture that creates a soft, sophisticated silhouette. This candle is more than just a light source; it is a statement piece that brings a touch of classic elegance to your coffee table, bookshelf, or vanity. Each candle is crafted with a lead-free cotton wick to ensure a clean, steady burn that lasts for hours. Whether you're gifting it to a loved one or elevating your own living space, the Bow Pillar offers a timeless aesthetic that complements any modern interior." 
+        },
+        "tealight-holders": { 
+            title: "Tealight Holders", price: "Rs. 800", img: "tealight.jpg", 
+            desc: "Transform your home into a sanctuary of light with our artisanal Tealight Holders. Crafted from high-quality ceramic with a smooth, matte finish, these holders are specifically designed to cast a warm, ambient glow that softens the atmosphere of any room. Their minimalist arch-inspired design allows them to blend seamlessly into your existing decor while providing a functional and beautiful way to display your favorite tealights. Ideal for spa days, meditation sessions, or intimate dinner parties, they offer a durable and heat-resistant solution for daily use. Pair them with our scented tealights to create a multi-sensory experience that promotes relaxation and tranquility in your sanctuary." 
+        },
+        "mushroom-candle": { 
+            title: "Mini Mushroom Candles", price: "Rs. 650", img: "mushroom.jpg", 
+            desc: "Bring the enchanting beauty of a secret forest into your home with our Mini Mushroom Candles. These whimsical yet sophisticated pieces are hand-crafted with meticulous attention to detail, featuring a charming 'fungi' silhouette that adds a playful touch to any setting. Poured with 100% natural wax and infused with a gentle, earthy fragrance, they are perfect for creating small pockets of magic on your desk or windowsill. Their compact size makes them an excellent choice for curated gift hampers or as a small token of appreciation for a friend. Despite their small stature, they boast a long burn time and a clean flame, ensuring that your little touch of nature lasts throughout the evening." 
+        },
+        "sculpture-bust": { 
+            title: "Sculpture Bust Candle", price: "Rs. 2,800", img: "sculpture.jpg", 
+            desc: "Inspired by the timeless beauty of classical Greco-Roman art, our Sculpture Bust Candle is the ultimate expression of luxury and craftsmanship. Each piece is individually hand-poured to capture the delicate features and soft drapes of a marble masterpiece, but with the warm, inviting texture of premium wax. This candle is designed for the art lover who appreciates the intersection of history and modern home fragrance. It serves as a stunning visual anchor in any room, radiating sophistication even when unlit. When you do choose to light it, the high-quality fragrance oils release a rich, multi-layered aroma that fills your space with a sense of grandeur and calm. A true collector's item for the discerning home decorator." 
+        }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const currentId = params.get('id'); 
+    const currentProduct = productData[currentId];
+
+    if (currentProduct) {
+        document.getElementById('display-title').innerText = currentProduct.title;
+        document.getElementById('display-price').innerText = currentProduct.price;
+        document.getElementById('display-desc').innerText = currentProduct.desc;
+        document.getElementById('display-img').style.backgroundImage = `url('${currentProduct.img}')`;
+        document.title = `${currentProduct.title} | LuminaScents`;
+    }
+
+    let isAddedToBag = false;
+
+    function handleAddToBag() {
+        const qty = parseInt(document.getElementById('quantity').value);
+        // Validating max quantity of 10[cite: 17]
+        if (qty < 1 || qty > 10) {
+            alert("Please select a quantity between 1 and 10.");
+            return;
+        }
+        isAddedToBag = true;
+        alert(`Successfully added ${qty} units of ${currentProduct.title} to your bag!`);
+    }
+
+    function goToOrderForm() {
+        if (!isAddedToBag) {
+            alert("Please add the product to your bag before proceeding to purchase.");
+            return;
+        }
+        const qty = document.getElementById('quantity').value;
+        // Redirecting to order-form.html[cite: 17]
+        window.location.href = `order-form.html?id=${currentId}&qty=${qty}`;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Story | LuminaScents</title>
+    <style>
+        body {
+            background-color: #fcf8f7; /* Matches light background from image */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .story-container {
+            max-width: 800px;
+            text-align: center;
+            font-family: "Garamond", "Hoefler Text", "Times New Roman", serif;
+            color: #b38b82; /* Muted rose tone */
+            line-height: 1.8;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            text-transform: uppercase;
+            font-weight: normal;
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+            animation: fadeInLines 1.5s ease forwards;
+        }
+
+        .line {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: block;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeInLines 1.2s ease forwards;
+        }
+
+        /* Styling for the bold last line */
+        .last-line {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        @keyframes fadeInLines {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Staggered delays */
+        .line:nth-child(1) { animation-delay: 0.3s; }
+        .line:nth-child(2) { animation-delay: 0.6s; }
+        .line:nth-child(3) { animation-delay: 0.9s; }
+        .line:nth-child(4) { animation-delay: 1.2s; }
+        .line:nth-child(5) { animation-delay: 1.5s; }
+        .line:nth-child(6) { animation-delay: 1.8s; }
+        .line:nth-child(7) { animation-delay: 2.1s; }
+        .line:nth-child(8) { animation-delay: 2.4s; }
+        .line:nth-child(9) { animation-delay: 2.7s; }
+        .line:nth-child(10) { animation-delay: 3.0s; }
+        .line:nth-child(11) { animation-delay: 3.3s; }
+
+    </style>
+</head>
+<body>
+
+    <div class="story-container">
+        <h2>A Little Something About Our Journey:</h2>
+        <div class="line-container">
+            <span class="line">Every great light begins with an intention to transform your space into a sanctuary.</span>
+            <span class="line">At LuminaScents, we believe a candle should be as beautiful to behold as it is to smell.</span>
+            <span class="line">Handcrafted from premium eco-friendly wax, our pieces serve as sculptural décor for your home.</span>
+            <span class="line">Designed for safety, our non-toxic formula ensures your haven remains healthy and pure.</span>
+            <span class="line">Our unique "cold scent throw" offers a delicate fragrance that lingers even when unlit.</span>
+            <span class="line">Nestled in artisanal holders, these candles act as permanent ornamental accents on any shelf.</span>
+            <span class="line">Muted tones and visual harmony allow each piece to complement your unique interior style.</span>
+            <span class="line">When you seek a glow, our sleek lighters provide an effortless spark to your ritual.</span>
+            <span class="line">By choosing us, you aren’t just buying a product; you are curating a luxurious environment.</span>
+            <span class="line">We invite you to experience the subtle magic of a fragrance that never truly needs a flame.</span>
+            <span class="line last-line">This is our promise: a masterpiece of light and décor that makes every room feel like home.</span>
+        </div>
+    </div>
+
+</body>
+</html>

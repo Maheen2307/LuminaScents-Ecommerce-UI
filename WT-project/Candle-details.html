@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuminaScents | Product Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600&family=Tenor+Sans&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-creme: #fdfaf7;
+            --nude-blush: #efe3da; 
+            --muted-brown: #4a3b33;
+            --dusk-rose: #8c5e5e;
+            --white: #ffffff;
+            --border-light: rgba(74, 59, 51, 0.15);
+        }
+
+        body {
+            font-family: 'Tenor Sans', sans-serif;
+            background-color: var(--bg-creme);
+            color: var(--muted-brown);
+            margin: 0;
+            padding: 20px;
+            border: 12px solid var(--white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .back-nav { width: 100%; max-width: 1100px; margin-bottom: 20px; }
+        .back-nav a { text-decoration: none; color: var(--muted-brown); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .product-container {
+            max-width: 1100px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            margin-top: 40px;
+            opacity: 0;
+            animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.2s;
+        }
+
+        .image-viewport {
+            width: 100%;
+            aspect-ratio: 1/1.2;
+            background-color: var(--nude-blush);
+            background-size: cover;
+            background-position: center;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .info-panel h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        .price-tag {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: var(--dusk-rose);
+        }
+
+        .desc-text {
+            line-height: 1.8;
+            margin-bottom: 40px;
+            font-size: 16px;
+            border-left: 2px solid var(--nude-blush);
+            padding-left: 20px;
+        }
+
+        .button-group { display: flex; gap: 15px; margin-top: 30px; }
+
+        .action-btn {
+            background: var(--muted-brown);
+            color: white;
+            padding: 18px 45px;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 13px;
+            transition: all 0.4s ease;
+        }
+
+        .action-btn:hover { background: var(--dusk-rose); letter-spacing: 5px; }
+
+        .secondary-btn {
+            background: transparent;
+            color: var(--muted-brown);
+            border: 1px solid var(--muted-brown);
+            padding: 18px 35px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 12px;
+            transition: all 0.4s ease;
+        }
+
+        .secondary-btn:hover { background: var(--nude-blush); border-color: var(--dusk-rose); }
+    </style>
+</head>
+<body>
+
+    <nav class="back-nav">
+        <a href="scented-candles.html">← Collections</a>
+    </nav>
+
+    <div class="product-container" id="main-content">
+        <div id="display-img" class="image-viewport"></div>
+
+        <div class="info-panel">
+            <h1 id="display-title">PLEASE SELECT A PRODUCT</h1>
+            <div id="display-price" class="price-tag"></div>
+            
+            <div style="margin-bottom: 25px;">
+                <label for="quantity" style="font-size: 11px; letter-spacing: 2px; display: block; margin-bottom: 10px;">QUANTITY</label>
+                <input type="number" id="quantity" value="1" min="1" max="10" 
+                       style="padding: 12px; border: 1px solid var(--border-light); width: 60px; font-family: 'Tenor Sans';">
+                <span style="font-size: 11px; margin-left: 10px; color: #888;">(Max 10 units)</span>
+            </div>
+
+            <p id="display-desc" class="desc-text"></p>
+            
+            <div class="button-group">
+                <button class="action-btn" onclick="handleAddToBag()">Add to Bag</button>
+                <button class="secondary-btn" onclick="goToOrderForm()">Proceed to Purchase</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+    const productData = {
+        "wild-lavender": { 
+            title: "Wild Lavender", price: "Rs. 1,800", img: "lavender.jpg", 
+            desc: "Transport yourself to the rolling purple fields of Provence with our Wild Lavender aromatic candle. Hand-poured using premium organic soy wax, this scent features a sophisticated blend of fresh lavender spikes, earthy sage, and a hint of soft musk. Designed specifically to reduce stress and promote deep sleep, its fragrance throw is powerful yet never overwhelming. Each jar is infused with natural essential oils that linger in the air long after the flame is extinguished. The clean-burning cotton wick ensures a soot-free experience for up to 45 hours of relaxation. Perfect for evening rituals or quiet reading corners, it creates an atmosphere of pure serenity. Our signature glass jar adds a touch of minimalist elegance to any interior décor." 
+        },
+        "creamy-vanilla": { 
+            title: "Creamy Vanilla", price: "Rs. 1,500", img: "vanilla.jpg", 
+            desc: "Experience the ultimate comfort of a warm, sun-drenched kitchen with our Creamy Vanilla candle. This isn't just a simple sweet scent; it is a complex layer of Madagascar vanilla bean, toasted sugar, and a subtle undertone of warm coconut milk. The fragrance is designed to evoke memories of home-baked treats and cozy winter afternoons. Our unique wax blend ensures a slow, even melt that fills large rooms with a rich, velvety aroma within minutes. It is the ideal companion for rainy days or as a welcoming scent in your entryway. The sweet, buttery notes are balanced with a touch of white orchid to keep the fragrance sophisticated and fresh. Each candle is hand-inspected to ensure the highest quality fragrance concentration." 
+        },
+        "velvet-rose": { 
+            title: "Velvet Rose", price: "Rs. 1,950", img: "rose.jpg", 
+            desc: "Evoke the timeless romance of a blooming secret garden with the Velvet Rose candle. This exquisite fragrance captures the essence of Damask roses at midnight, combined with deep notes of oud wood and a whisper of clove spice. It is a bold, luxurious scent that commands attention while maintaining a delicate floral grace. The deep pink wax reflects the richness of the ingredients, making it a beautiful statement piece for your dining table or bedroom. Formulated for a high-intensity scent throw, it effectively masks odors while providing a spa-like floral environment. The long-lasting fragrance profile evolves as it burns, revealing hidden notes of amber and praline. Truly the gold standard of floral scents, it makes an unforgettable gift for someone special." 
+        },
+        "belgian-cocoa": { 
+            title: "Belgian Cocoa", price: "Rs. 1,750", img: "cocoa.jpg", 
+            desc: "Indulge in the rich, comforting embrace of our Belgian Cocoa candle. Crafted with notes of dark roasted cocoa beans and a hint of creamy hazelnut, this scent turns any room into a high-end chocolatier’s boutique. It is the perfect choice for those who love deep, gourmand fragrances that feel like a warm hug on a cold evening. The wax melts evenly, releasing a consistent aroma that is both sophisticated and nostalgic. Whether you are hosting a dinner party or enjoying a quiet night in, the Belgian Cocoa adds a layer of luxurious warmth. Each candle features a lead-free wick and eco-friendly soy wax for a cleaner, longer burn. Elevate your living space with this decadent, mouth-watering olfactory experience." 
+        },
+        "pistachio-gelato": { 
+            title: "Pistachio Gelato", price: "Rs. 2,100", img: "pistachio.jpg", 
+            desc: "Bright, nutty, and irresistibly sweet, the Pistachio Gelato candle is a summer dream in a jar. Inspired by the artisanal gelaterias of Italy, it blends roasted pistachio notes with vanilla cream and a touch of almond. This fragrance is uplifting and vibrant, making it an excellent choice for kitchens or sunlit living rooms. The light green tint of the wax adds a playful yet elegant pop of color to your home decor. Our special fragrance oil blend ensures a wide scent throw that captures the refreshing essence of a frozen treat. It burns cleanly for up to 50 hours, providing a long-lasting journey into sweetness. Treat yourself to this unique, gourmet aroma that feels like a Mediterranean vacation." 
+        },
+        "night-jasmine": { 
+            title: "Night Jasmine", price: "Rs. 1,650", img: "jasmine.jpg", 
+            desc: "Capture the mystery of a midnight garden with our intoxicating Night Jasmine candle. This scent highlights the heady, floral notes of blooming jasmine vines paired with soft green leaves and a base of white musk. It is a romantic and ethereal fragrance that is perfect for setting a tranquil mood in the evening. The delicate floral profile is carefully balanced to ensure it is refreshing rather than overpowering. Hand-poured in small batches, this candle represents the height of floral artisanal craft. The flicker of the flame through the glass illuminates the room while the scent transports you to a serene outdoor sanctuary. Ideal for those who appreciate classic, sophisticated florals with a modern twist." 
+        },
+        "whipped-cream": { 
+            title: "Whipped Cream", price: "Rs. 1,400", img: "cream.jpg", 
+            desc: "Light, airy, and delicately sweet, our Whipped Cream candle is the epitome of subtle luxury. It features a soft blend of heavy cream, powdered sugar, and a tiny dash of vanilla extract. This fragrance is perfect for smaller spaces where you want a gentle, clean scent that doesn't overwhelm the senses. It creates a fluffy, cloud-like atmosphere that makes your home feel instantly more inviting and cozy. The minimalist white aesthetic of the candle fits seamlessly into any modern or traditional interior. Despite its gentle profile, the scent lingers beautifully, leaving a faint trail of sweetness in the air. Each candle is made with 100% natural wax to ensure the purest fragrance experience possible." 
+        },
+        "blushing-peony": { 
+            title: "Blushing Peony", price: "Rs. 2,200", img: "peony.jpg", 
+            desc: "Celebrate the arrival of spring with the vibrant and lush aroma of Blushing Peony. This candle features full-bodied notes of peony petals in peak bloom, accented by crisp red apple and soft suede. It is a flirtatious and elegant scent that brings the freshness of a florist’s shop directly into your home. The sophisticated floral layers make it a favorite for daytime use, especially in bedrooms and dressing areas. Its high fragrance concentration ensures that even a short burn time will refresh your entire living space. Encased in our signature glass, it serves as both a functional scent and a piece of high-end decor. Experience the luxury of one of the world's most beloved flowers throughout the year." 
+        },
+        "white-lily": { 
+            title: "White Lily", price: "Rs. 1,850", img: "lily.jpg", 
+            desc: "Symbolizing purity and serenity, the White Lily candle offers a clean, crisp floral experience like no other. It combines the majestic scent of Casablanca lilies with subtle green notes and a hint of spring rain. This fragrance is exceptionally refreshing and is designed to clear the mind and revitalize the spirit. It is an ideal companion for morning yoga or meditation sessions, providing a peaceful backdrop to your routine. The sleek, minimalist design of the candle highlights the clarity of the scent itself. Our artisanal process ensures that every lily note is captured with stunning accuracy and depth. Bring a touch of timeless, zen-like elegance to your home with this tranquil floral masterpiece." 
+        },
+        "choco-mint-silk": { 
+            title: "Choco-Mint Silk", price: "Rs. 1,700", img: "mint.jpg", 
+            desc: "A refreshing twist on a classic treat, Choco-Mint Silk blends cooling peppermint with the richness of smooth dark chocolate. The initial burst of mint provides an energizing sensation, followed quickly by the comforting, velvety notes of cocoa. This balanced fragrance is excellent for clearing the air after cooking or for providing a stimulating boost during work hours. The dual-layered scent profile keeps the olfactory experience interesting from the first light to the very last burn. Crafted with premium oils, it mimics the exact sensation of a silk chocolate mint melting on the tongue. It is a crowd-pleasing aroma that appeals to both chocolate lovers and those who prefer fresh, herbal scents. A delightful addition to any candle collection." 
+        },
+        "fresh-gardenia": { 
+            title: "Fresh Gardenia", price: "Rs. 1,900", img: "gardenia.jpg", 
+            desc: "The Fresh Gardenia candle is a tribute to one of nature's most powerful and beautiful aromas. It delivers a rich, creamy floral scent that is both tropical and sophisticated, reminiscent of warm southern nights. With undertones of green tuberose and white blossom, it creates an opulent atmosphere of luxury. This candle is perfect for creating a memorable first impression in entryways or for pampering yourself in a bath setting. The intense fragrance throw ensures that even large rooms are filled with the scent of fresh-cut flowers. Every jar is hand-finished to ensure the wick is perfectly centered for an even, soot-free burn. Embrace the bold, classic beauty of the gardenia flower with our artisanal wax blend." 
+        },
+        "almond-cream": { 
+            title: "Almond Cream", price: "Rs. 1,600", img: "almond.jpg", 
+            desc: "Warm and inviting, our Almond Cream candle blends toasted almond notes with a thick swirl of vanilla custard. This gourmand fragrance is cozy and grounding, making it the perfect scent for family gatherings or quiet evenings by the fire. The nutty aroma is perfectly balanced with sweetness, preventing it from being too heavy or cloying. It creates a soft, golden ambiance that makes any house feel like a home. The high-quality soy wax blend provides a long-lasting burn that remains consistent in scent until the end. Its universal appeal makes it an excellent choice for a thoughtful gift or a personal treat. Rediscover the simple joy of warm, nutty fragrances with this creamy, handcrafted delight." 
+        }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const currentId = params.get('id'); 
+    const currentProduct = productData[currentId];
+
+    if (currentProduct) {
+        document.getElementById('display-title').innerText = currentProduct.title;
+        document.getElementById('display-price').innerText = currentProduct.price;
+        document.getElementById('display-desc').innerText = currentProduct.desc;
+        document.getElementById('display-img').style.backgroundImage = `url('${currentProduct.img}')`;
+        document.title = `${currentProduct.title} | LuminaScents`;
+    } else {
+        document.getElementById('main-content').innerHTML = `
+            <div style="text-align:center; margin-top:100px; width:100%;">
+                <h2 style="font-family:'Cormorant Garamond'; font-size:48px;">Product Not Found</h2>
+                <a href="scented-candles.html" style="color:var(--dusk-rose); text-transform:uppercase; letter-spacing:2px; font-size:12px;">Return to Shop</a>
+            </div>`;
+    }
+
+    let isAddedToBag = false;
+
+    function handleAddToBag() {
+        const qty = document.getElementById('quantity').value;
+        if (qty < 1 || qty > 10) {
+            alert("Please select a quantity between 1 and 10.");
+            return;
+        }
+        isAddedToBag = true;
+        alert(`Successfully added ${qty} units of ${currentProduct.title} to your bag!`);
+    }
+
+    function goToOrderForm() {
+        if (!isAddedToBag) {
+            alert("Please add the product to your bag before proceeding to purchase.");
+            return;
+        }
+        const qty = document.getElementById('quantity').value;
+        window.location.href = `order-form.html?id=${currentId}&qty=${qty}`;
+    }
+</script>
+</body>
+</html>

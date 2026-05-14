@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuminaScents | Handcrafted Aesthetic Candles</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,400&family=Tenor+Sans&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-creme: #fdfaf7;
+            --nude-blush: #efe3da; 
+            --muted-brown: #4a3b33; 
+            --dusk-rose: #8c5e5e;  
+            --white: #ffffff;
+            --border-light: rgba(74, 59, 51, 0.15); 
+            --transition-smooth: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Tenor Sans', sans-serif;
+            background-color: var(--bg-creme);
+            color: var(--muted-brown);
+            overflow-x: hidden;
+            line-height: 1.6;
+            /* Page-wide Border Frame */
+            border: 12px solid var(--white);
+        }
+
+        /* --- EDITORIAL HEADER --- */
+        header {
+    padding: 30px 20px; /* Adjust padding for a cleaner editorial look */
+    background: var(--bg-creme);
+    width: 100%;
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    flex-direction: column; /* Stacks the logo bar on top of the nav links */
+    align-items: center;    /* Centers everything horizontally */
+}
+
+.header-top-bar {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px; /* Space between logo and navigation */
+}
+
+.logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px; 
+    letter-spacing: 1px;
+    color: var(--dusk-rose); 
+    text-decoration: none;
+    font-weight: 400;
+    text-align: center;
+    display: block; /* Ensures it takes up the center space */
+}
+
+        .header-icons.right { justify-content: flex-end; }
+
+        /* Brand Name: LuminaScents */
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px; 
+            letter-spacing: 1px;
+            color: var(--dusk-rose); 
+            text-decoration: none;
+            font-weight: 400;
+        }
+
+        .nav-links-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding-bottom: 10px;
+        }
+
+        .nav-links-container a {
+            text-decoration: none;
+            color: var(--muted-brown); 
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: lowercase;
+            transition: 0.3s;
+        }
+
+        /* --- HERO --- */
+        .hero-container {
+            width: 100%;
+            height: 100vh; /* Reduced height for tighter look */
+            background: url('scented.jpeg') no-repeat center center;
+            background-size: cover;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+         --- BOLD STATEMENT --- 
+        .bold-statement-box {
+            padding: 40px 0; /* Reduced spacing */
+            text-align: center;
+        }
+        /* --- BOLD STATEMENT --- */
+        .bold-statement-box {
+            padding: 40px 0; /* Reduced spacing */
+            text-align: center;
+        }
+
+      
+
+        /* --- BRAND STORY --- */
+        .brand-story {
+            padding: 25px 10%; /* Tighter padding */
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            border: 1px solid var(--dusk-rose);
+            outline: 1px solid var(--dusk-rose);
+            outline-offset: 6px;
+            
+        }
+
+        .brand-story p {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 19px;
+            line-height: 1.4;
+            padding: 5px;
+        }
+
+        /* --- CATEGORIES --- */
+        .shop-section {
+            padding: 40px 5% 60px; /* Reduced vertical spacing */
+            text-align: center;
+        }
+
+     .shop-title {
+    /* Use the font already in your head tag */
+    font-family: 'Cormorant Garamond', serif;
+    
+    /* Exact Styling */
+    font-size: 64px;          /* Large and impactful */
+    font-weight: 300;         /* Light weight gives it that elegant look */
+    color: #c2a3a3;           /* The specific muted rose/taupe in the image */
+    letter-spacing: -1px;     /* Tighter spacing for a modern editorial feel */
+    text-transform: lowercase; /* Essential for that "aesthetic" look */
+    
+    /* Layout */
+    text-align: center;
+    margin-bottom: 40px;
+    font-style: normal;       /* Ensure it's not italicized */
+}
+    
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px; /* Tighter grid spacing */
+        }
+
+        .category-card {
+            background: white;
+            padding: 15px;
+            padding-bottom: 25px;
+            border: 1px solid var(--border-light);
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition-smooth);
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--dusk-rose);
+        }
+
+        .category-img {
+            
+            width: 100%;
+            aspect-ratio: 1/1.1;
+            background: var(--nude-blush);
+            margin-bottom: 15px;
+            border: 1px solid var(--border-light);
+            /* Replace 'holders-cover.jpg' with your actual image file name */
+
+            
+        }
+        
+
+        .category-card h3 {
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        /* --- REVEAL ANIMATION --- */
+        .reveal { opacity: 0; transform: translateY(20px); transition: var(--transition-smooth); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        footer {
+            padding: 60px 0;
+            background: var(--nude-blush);
+            text-align: center;
+            font-size: 11px;
+            letter-spacing: 2px;
+            border-top: 1px solid var(--border-light);
+        }
+        .candles-bg {
+    background-image: url('candles.jpg'); /* Your image file here */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;   
+}
+.img-holders { 
+    background-image: url('holder.jpg'); 
+    background-size: cover;
+    background-position: center;
+}
+/* Replace 'lighters-cover.jpg' with your actual image file name */
+.img-lighters { 
+    background-image: url('lighter.jpg'); 
+    background-size: cover;
+    background-position: center;
+}
+.category-card:hover .category-img {
+    transform: scale(1.05);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.category-img {
+    overflow: hidden; /* Keeps the zoom inside the borders */
+}
+/* 1. Prepare the container for stacking images */
+.category-img {
+    width: 100%;
+    aspect-ratio: 1/1.1;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-light);
+    position: relative; /* Allows images to stack */
+    overflow: hidden;   /* Keeps the zoom inside the border */
+}
+
+/* 2. Style for both the default and hover images */
+.category-img div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+}
+
+/* 3. The 'back' image (the one that appears on hover) */
+.category-img .img-hover {
+    opacity: 0;
+    transform: scale(1.08); /* Starts slightly zoomed in */
+}
+
+/* 4. The Hover Effect */
+.category-card:hover .img-main {
+    opacity: 0;
+    transform: scale(1.1); /* Zooms out slightly while fading */
+}
+
+.category-card:hover .img-hover {
+    opacity: 1;
+    transform: scale(1); /* Zooms in to normal size */
+}
+
+
+/* Straight Thick Border above "take your pick" */
+#shop::before {
+    content: "";
+    display: block;
+    width: 100%;
+    
+    /* This creates a "Double Line" effect: one thick, one thin */
+    height: 8px; 
+    border-top: 7px solid var(--nude-blush);
+    border-bottom: 2px solid var(--nude-blush);
+    
+    background-color: transparent;
+    margin-bottom: 50px; /* Space between line and title */
+}
+
+/* Ensure the shop section is ready for the border */
+.shop-section {
+    padding-top: 0 !important;
+}
+
+
+
+/* Straight Thick Border below the category cards */
+.shop-section::after {
+    content: "";
+    display: block;
+    width: 100%;
+    
+    /* Matching the top border: one thick, one thin */
+    height: 8px; 
+    border-top: 2px solid var(--nude-blush);
+    border-bottom: 7px solid var(--nude-blush);
+    
+    background-color: transparent;
+    margin-top: 60px; /* Space between the cards and the bottom line */
+}
+
+/* Ensure the section has a relative position to house the border */
+.shop-section {
+    position: relative;
+    padding-bottom: 0 !important;
+}
+
+/* --- OTHER THINGS SECTION --- */
+.other-things-section {
+    padding: 80px 5% 100px;
+    text-align: center;
+}
+
+.other-things-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300; /* Light weight, no bold */
+    color: rgba(74, 59, 51, 0.4); /* Faded brown color */
+    text-transform: lowercase;
+    letter-spacing: 1px;
+    margin-bottom: 50px;
+}
+/* --- UPDATED GRID FOR 4 ITEMS --- */
+.other-grid {
+    display: grid;
+    /* Changed minmax to 200px to allow 4 items to fit side-by-side on most screens */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 30px;
+    max-width: 1200px; /* Slightly wider to give 4 arches breathing room */
+    margin: 0 auto;
+}
+
+/* Updated label styling for that clean look */
+.other-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 15px;
+    color: var(--muted-brown);
+}
+.other-item {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.other-box {
+    width: 100%;
+    aspect-ratio: 1/1.3;
+    border-radius: 200px 200px 0 0; /* Rounds only the top */
+    background-color: var(--white);
+    border: 1px solid var(--border-light);
+    margin-bottom: 15px;
+    transition: var(--transition-smooth);
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+
+
+/* Update the base box style */
+.other-box {
+    width: 100%;
+    aspect-ratio: 1/1.3;
+    border-radius: 200px 200px 0 0;
+    background-color: var(--white);
+    border: 1px solid var(--border-light);
+    margin-bottom: 15px;
+    
+    /* Crucial for smooth background zoom */
+    background-size: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* The 1.2s timing makes it feel very high-end */
+    transition: background-size 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.8s ease;
+    
+    overflow: hidden;
+}
+
+/* The Hover Effect */
+.other-item:hover .other-box {
+    background-size: 112%; /* Slow, subtle zoom */
+    transform: translateY(-8px); /* Lifts the arch slightly */
+    filter: brightness(0.95); /* Very slight dimming for depth */
+}
+
+/* Price Styling */
+.other-price {
+    font-size: 12px;
+    font-family: 'Tenor Sans', sans-serif;
+    color: var(--muted-brown);
+    opacity: 0.6;
+    margin-top: 4px;
+    letter-spacing: 1px;
+}
+
+.other-label {
+    margin-top: 15px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+}
+
+.values-display {
+  display: flex;
+  justify-content: space-around; /* Aligns them under the 4 arch boxes */
+  align-items: flex-start;
+  padding: 20px 50px;
+  text-align: center;
+}
+
+
+
+/* --- SWAYING PIVOT VALUES SECTION --- */
+
+.values-display {
+  display: flex;
+  justify-content: center;
+  gap: 50px; /* Increased gap for larger icons */
+  align-items: flex-end; /* Aligns them at the base for better swaying look */
+  padding: 60px 20px;
+  flex-wrap: wrap;
+}
+
+.value-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px; /* Wider container for huge icons */
+}
+
+.value-icon {
+  width: 220px; /* Even bigger size */
+  height: auto;
+  margin-bottom: 15px;
+  display: block;
+  
+  /* Set the pivot point to the bottom center */
+  transform-origin: bottom center;
+  
+  /* Continuous swaying animation */
+  animation: headSway 4s ease-in-out infinite;
+}
+
+/* Different delays so they sway like a field of flowers */
+.value-group:nth-child(1) .value-icon { animation-delay: 0s; }
+.value-group:nth-child(2) .value-icon { animation-delay: 0.8s; }
+.value-group:nth-child(3) .value-icon { animation-delay: 0.4s; }
+.value-group:nth-child(4) .value-icon { animation-delay: 1.2s; }
+
+/* The Head-Swaying (Rotating) Effect */
+@keyframes headSway {
+  0%, 100% { 
+    transform: rotate(-5deg); /* Tilts to the left */
+  }
+  50% { 
+    transform: rotate(5deg); /* Tilts to the right */
+  }
+}
+
+.value-text {
+  color: #8d6e63;
+  font-size: 16px; /* Slightly larger text to match big icons */
+  letter-spacing: 1.5px;
+  text-transform: lowercase;
+  margin-top: 10px;
+}
+
+
+
+.custom-divider {
+  /* This prevents the line from being "full" width */
+  width: 91%; 
+  max-width: 1500px;
+  margin: 40px auto; /* Centers the divider */
+  
+  /* The top thin line */
+  border-top: 2px solid #efe3dc; 
+  
+  /* The bottom thick line */
+  border-bottom: 7px solid #efe3dc; 
+  
+  /* The gap between the two lines */
+  height: 17px; 
+}
+
+.value-text {
+  color: #8d6e63;
+  font-weight: 400; /* Keeping text color less prominent as preferred */
+  margin-top: 15px;
+  text-align: center;
+}
+
+
+
+
+/* --- CREATIVE VALUES HEADER --- */
+
+.creative-values-header {
+    text-align: center;
+    margin: 80px 0 40px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.value-tag {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--dusk-rose);
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.values-main-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    font-style: italic; /* Adds that "handwritten/editorial" vibe */
+    color: var(--muted-brown);
+    margin-bottom: 20px;
+}
+
+
+/* --- REDUCED SPACE VALUES SECTION --- */
+
+/* 1. Shorten the vertical line and reduce bottom margin */
+.aesthetic-line {
+    width: 1px;
+    height: 10px; /* Reduced from 60px */
+    background: linear-gradient(to bottom, var(--dusk-rose), transparent);
+    margin: 5px 0 0px 0; /* Tightened margins */
+}
+
+/* 2. Reduce top padding to pull icons closer to the line */
+.values-display {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 40px;
+    padding: 10px 40px 80px; /* Reduced top padding from 60px to 10px */
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.values-display::-webkit-scrollbar {
+    display: none;
+}
+
+/* 3. Keep the group width and animation as they were */
+.value-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 auto;
+    width: 250px;
+}
+
+.value-icon {
+    width: 240px;
+    height: auto;
+    margin-bottom: 10px; /* Tighter space between icon and text */
+    display: block;
+    transform-origin: bottom center;
+    animation: headSway 4.5s ease-in-out infinite;
+}
+
+@keyframes headSway {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+}
+
+.value-icon {
+    width: 240px; /* Even bigger as requested */
+    height: auto;
+    margin-bottom: 20px;
+    display: block;
+    transform-origin: bottom center;
+    /* The Sway Animation from before */
+    animation: headSway 4.5s ease-in-out infinite;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.03)); /* Adds soft depth */
+}
+
+.value-text {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted-brown);
+    opacity: 0.7;
+}
+
+
+/* Double Divider: Thin top, Thick bottom */
+.faq-divider {
+    width: 90%;
+    max-width: 1500px;
+    margin: 40px auto;
+    border-top: 2px solid #efe3dc;    /* Thin line */
+    border-bottom: 7px solid #efe3dc; /* Thick line */
+    height: 15px;
+}
+
+.faq-section {
+    max-width: 1100px;
+    margin: 60px auto 100px;
+    padding: 0 20px;
+}
+
+.faq-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    color: var(--dusk-rose);
+    text-align: center;
+    margin-bottom: 40px;
+    text-transform: lowercase;
+}
+
+.faq-item {
+    background-color: #e3ddd3; /* Clay beige from image_594b9f.png */
+    margin-bottom: 12px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.faq-item summary {
+    padding: 10px 12px;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--muted-brown);
+    text-transform: lowercase;
+}
+
+.faq-item summary::after {
+    content: '›'; 
+    font-size: 26px;
+    color: #8c8c8c;
+    transition: transform 0.3s ease;
+}
+
+.faq-item[open] summary::after {
+    transform: rotate(90deg);
+}
+
+.faq-answer {
+    background-color: #ffffff;
+    padding: 25px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--muted-brown);
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+
+/* --- REVIEWS SLIDER --- */
+.reviews-container {
+    padding: 80px 0;
+    background-color: var(--bg-creme);
+    overflow: hidden; /* Hides the reviews as they slide out of view */
+    text-align: center;
+}
+
+.reviews-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 300;
+    color: var(--dusk-rose);
+    margin-bottom: 10px;
+}
+
+.main-stars { color: #f9d77e; font-size: 24px; margin-bottom: 5px; }
+.review-count { font-size: 12px; opacity: 0.6; margin-bottom: 40px; display: block; }
+
+/* The Track that holds all reviews */
+.reviews-track {
+    display: flex;
+    width: calc(350px * 20); /* Large width to accommodate duplicates for looping */
+    animation: scroll 40s linear infinite;
+}
+
+.reviews-track:hover { animation-play-state: paused; } /* Pauses on hover so people can read */
+
+.review-card {
+    width: 320px;
+    margin: 0 30px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.review-stars { color: #f9d77e; font-size: 18px; margin-bottom: 10px; }
+
+.review-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--muted-brown);
+    margin-bottom: 5px;
+}
+
+.review-text {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-bottom: 20px;
+}
+
+.customer-info {
+    font-size: 12px;
+    opacity: 0.5;
+    margin-bottom: 15px;
+}
+
+.customer-img {
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 4px; /* Matches the slightly soft square look in your image */
+    filter: sepia(20%); /* Adds that aesthetic vintage filter */
+}
+
+/* Keyframe for sliding right to left */
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-350px * 10)); } /* Adjust based on number of cards */
+}
+
+
+/* Double Divider to separate FAQ and Reviews */
+.section-separator {
+    width: 90%;
+    max-width: 1500px;
+    margin: 60px auto; /* Provides breathing room between sections */
+    border-top: 2px solid #efe3dc;    /* Thin top line */
+    border-bottom: 7px solid #efe3dc; /* Thick bottom line */
+    height: 15px;
+}
+
+    </style>
+</head>
+<body>
+
+ 
+    <header>
+    <div class="header-top-bar">
+        <a href="#" class="logo">LuminaScents</a>
+    </div>
+
+    <nav class="nav-links-container reveal">
+        <a href="#">home</a>
+        <a href="#shop">shop</a>
+        <a href="our story.html" class="nav-link">our story</a>
+    </nav>
+</header>
+
+    <div class="hero-container reveal"></div>
+
+    <div class="bold-statement-box">
+        <h2 class="reveal"><strong>non-toxic — eco-conscious — aesthetic</strong></h2>
+    </div>
+
+    <section class="brand-story reveal">
+        <p>
+            at LuminaScents, we create hand-poured sculptural candles in the softest pastel hues. 
+            designed to bring a touch of light, warmth, and minimalist beauty to your everyday life.
+        </p>
+    </section>
+
+    <section id="shop" class="shop-section">
+        <h2 class="shop-title reveal">take your pick</h2>
+
+
+        
+        <div class="category-grid">
+<a href="scented-candles.html" class="category-card reveal">
+    <div class="category-img">
+        <div class="img-main candles-bg"></div> 
+        <div class="img-hover" style="background-image: url('scented2.jpg');"></div>
+    </div>
+    <h3>Scented Candles</h3>
+</a>
+
+<a href="candle-holders.html" class="category-card reveal">
+    <div class="category-img">
+        <div class="img-main img-holders"></div>
+        <div class="img-hover" style="background-image: url('holder2.jpg');"></div>
+    </div>
+    <h3>Candle Holders</h3>
+</a>
+<a href="lighters.html" class="category-card reveal">
+    <div class="category-img">
+        <div class="img-main img-lighters"></div>
+        <div class="img-hover" style="background-image: url('lighter2.jpg');"></div>
+    </div>
+    <h3>Lighters</h3>
+</a>
+    </section>
+
+    
+ 
+<section class="other-things-section">
+    <h2 class="other-things-title reveal">other things to get</h2>
+    <div class="other-grid">
+        
+<a href="product-details.html?id=bow-pillar" class="other-item reveal">
+    <div class="other-box" style="background-image: url('bow pillar.jpg');"></div>
+    <h4 class="other-label">Bow Pillar Candle</h4>
+    <p class="other-price">Rs. 1,500</p>
+</a>
+
+<a href="product-details.html?id=tealight-holders" class="other-item reveal">
+    <div class="other-box" style="background-image: url('tealight.jpg');"></div>
+    <h4 class="other-label">Tealight Holders</h4>
+    <p class="other-price">Rs. 800</p>
+</a>
+
+<a href="product-details.html?id=mushroom-candle" class="other-item reveal">
+    <div class="other-box" style="background-image: url('mushroom.jpg');"></div>
+    <h4 class="other-label">Mini Mushroom Candles</h4>
+    <p class="other-price">Rs. 650</p>
+</a>
+
+<a href="product-details.html?id=sculpture-bust" class="other-item reveal">
+    <div class="other-box" style="background-image: url('sculpture.jpg');"></div>
+    <h4 class="other-label">Sculpture Bust Candle</h4>
+    <p class="other-price">Rs. 2,800</p>
+</a>
+</section>
+
+
+<div class="custom-divider"></div>
+
+
+
+<div class="creative-values-header">
+    <span class="value-tag">our philosophy</span>
+    <h2 class="values-main-title">the values we live by</h2>
+    <div class="aesthetic-line"></div>
+</div>
+
+<section class="values-display">
+  <!-- Value 1 -->
+  <div class="value-group">
+    <img src="non-toxic.jpg" alt="non-toxic" class="value-icon">
+    <p class="value-text">non-toxic</p>
+  </div>
+
+  <!-- Value 2 -->
+  <div class="value-group">
+    <img src="eco-freind.jpg" alt="eco-friendly" class="value-icon">
+    <p class="value-text">eco-friendly</p>
+  </div>
+
+  <!-- Value 3 -->
+  <div class="value-group">
+    <img src="cute.jpg" alt="cute AF" class="value-icon">
+    <p class="value-text">cute AF</p>
+  </div>
+
+  <!-- Value 4 -->
+  <div class="value-group">
+    <img src="love.jpg" alt="handmade w/ love" class="value-icon">
+    <p class="value-text">handmade<br>w/ love</p>
+  </div>
+</section>
+
+
+
+<!-- The Double Divider -->
+<div class="faq-divider"></div>
+
+<section class="faq-section">
+    <h2 class="faq-title">most asked questions</h2>
+
+    <details class="faq-item">
+        <summary>what is your delivery timeline?</summary>
+        <div class="faq-answer">
+            around 7-10 business days, give or take, unless some wacky stuff happens.
+        </div>
+    </details>
+
+    <details class="faq-item">
+        <summary>what are your payment modes?</summary>
+        <div class="faq-answer">
+            we currently accept bank transfers, jazzcash, easypaisa, and cash on delivery for most cities.
+        </div>
+    </details>
+
+    <details class="faq-item">
+        <summary>what are your shipping charges?</summary>
+        <div class="faq-answer">
+            standard shipping is Rs. 250 nationwide. we offer free shipping on all orders over Rs. 5,000!
+        </div>
+    </details>
+
+    <details class="faq-item">
+        <summary>do you ship worldwide?</summary>
+        <div class="faq-answer">
+            currently, we only light up homes within pakistan, but we hope to expand soon.
+        </div>
+    </details>
+
+    <details class="faq-item">
+        <summary>what's the best way to care for your products?</summary>
+        <div class="faq-answer">
+            always trim your wick to 1/4" before lighting. for sculptural candles, place them on a dish to catch the wax.
+        </div>
+    </details>
+
+    <details class="faq-item">
+        <summary>do you make custom candles?</summary>
+        <div class="faq-answer">
+            yes! we love creating custom colors for events and weddings. slide into our DMs to discuss.
+        </div>
+    </details>
+</section>
+
+
+<!-- End of FAQ Section -->
+</section>
+
+<!-- The Separator Line between FAQ and Reviews -->
+<div class="section-separator reveal"></div>
+
+<section class="reviews-container">
+    <div class="reviews-header">
+        <h2>let our customers do the talking</h2>
+        <div class="main-stars">★★★★★</div>
+        <span class="review-count">from 150+ reviews ☑</span>
+    </div>
+
+    <div class="reviews-track">
+        <!-- Review 1 -->
+        <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-title">lovely scent and colour</p>
+            <p class="review-text">lovely scent and colour.</p>
+            <p class="customer-info">Anonymous</p>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-title">Quality 10/10</p>
+            <p class="review-text">really enjoy the scent and shape.</p>
+            <p class="customer-info">Anonymous</p>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-title">super cute candle 😍</p>
+            <p class="review-text">love the packaging as well ❤️</p>
+            <p class="customer-info">Sara Khan</p>
+        </div>
+
+        <!-- Review 4 -->
+        <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-title">Perfect Gift</p>
+            <p class="review-text">Bought this for a friend and she obsessed!</p>
+            <p class="customer-info">Zainab R.</p>
+        </div>
+
+        <!-- Review 5 -->
+        <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-title">Aesthetic Goals</p>
+            <p class="review-text">Matches my room decor perfectly.</p>
+            <p class="customer-info">Ayesha M.</p>
+        </div>
+
+        <!-- Review 6 -->
+        <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-title">Heavenly Smell</p>
+            <p class="review-text">The vanilla bean scent is to die for.</p>
+            <p class="customer-info">Anonymous</p>
+        </div>
+
+        <!-- Review 7 -->
+        <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-title">Slow Burn</p>
+            <p class="review-text">Lasts much longer than expected.</p>
+            <p class="customer-info">Fatima W.</p>
+        </div>
+
+        <!-- Review 8 -->
+        <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-title">Obsessed!</p>
+            <p class="review-text">I need every single shape now.</p>
+            <p class="customer-info">Hiba S.</p>
+        </div>
+
+        <!-- Review 9 -->
+        <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-title">Eco Friendly</p>
+            <p class="review-text">Love that it's non-toxic soy wax.</p>
+            <p class="customer-info">Anonymous</p>
+        </div>
+
+        <!-- Review 10 -->
+        <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-title">Fast Delivery</p>
+            <p class="review-text">Came in perfect condition.</p>
+            <p class="customer-info">Marium J.</p>
+        </div>
+
+        <!-- DUPLICATE FOR SEAMLESS LOOP (Paste the same 10 again) -->
+        <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-title">lovely scent and colour</p>
+            <p class="review-text">lovely scent and colour.</p>
+            <p class="customer-info">Anonymous</p>
+        </div>
+        <!-- ... and so on for all 10 ... -->
+    </div>
+</section>
+    <footer>
+        <p>LuminaScents handcrafted in pakistan</p>
+        <p style="margin-top: 5px; opacity: 0.6;">&copy; 2026 all rights reserved</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>

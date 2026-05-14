@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuminaScents | Confirm Order</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600&family=Tenor+Sans&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-creme: #fdfaf7;
+            --nude-blush: #efe3da; 
+            --muted-brown: #4a3b33;
+            --dusk-rose: #8c5e5e;
+            --white: #ffffff;
+            --border-light: rgba(74, 59, 51, 0.15);
+        }
+
+        /* Fade-in animation definitions */
+        @keyframes fadeInPage {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUpForm {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        body {
+            font-family: 'Tenor Sans', sans-serif;
+            background-color: var(--bg-creme);
+            color: var(--muted-brown);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            /* Page fade-in effect */
+            animation: fadeInPage 1s ease-in-out;
+        }
+
+        .form-container {
+            background: white;
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            /* Form slide-up effect */
+            animation: slideUpForm 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        h2 { font-family: 'Cormorant Garamond'; font-size: 32px; text-transform: uppercase; text-align: center; margin-bottom: 30px; }
+
+        .order-summary {
+            background: var(--bg-creme);
+            padding: 20px;
+            margin-bottom: 30px;
+            font-size: 14px;
+            border-left: 3px solid var(--dusk-rose);
+            text-transform: capitalize;
+        }
+
+        .input-group { margin-bottom: 20px; }
+        label { display: block; font-size: 11px; letter-spacing: 1px; margin-bottom: 8px; text-transform: uppercase; }
+        
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-light);
+            font-family: 'Tenor Sans';
+            box-sizing: border-box;
+            transition: border-color 0.3s ease; /* Subtle focus transition */
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--dusk-rose);
+        }
+
+        input:invalid { border-color: #e74c3c; }
+
+        .confirm-btn {
+            width: 100%;
+            background: var(--muted-brown);
+            color: white;
+            padding: 18px;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 13px;
+            margin-top: 10px;
+            transition: 0.4s ease;
+        }
+
+        .confirm-btn:hover { 
+            background: var(--dusk-rose);
+            transform: translateY(-2px); /* Slight lift on hover */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Delivery Details</h2>
+    
+    <div class="order-summary" id="order-summary">
+        Loading order details...
+    </div>
+
+    <form id="purchase-form" onsubmit="confirmOrder(event)">
+        <div class="input-group">
+            <label>Full Name</label>
+            <input type="text" id="cust-name" required 
+                   pattern="[A-Za-z\s]+" 
+                   title="Please enter alphabets only" 
+                   placeholder="Enter your name">
+        </div>
+
+        <div class="input-group">
+            <label>Phone Number</label>
+            <input type="tel" id="cust-phone" required 
+                   pattern="[0-9]{11}" 
+                   title="Please enter exactly 11 digits" 
+                   placeholder="03xxxxxxxxx">
+        </div>
+
+        <div class="input-group">
+            <label>City</label>
+            <input type="text" id="cust-city" required placeholder="e.g. Lahore">
+        </div>
+
+        <div class="input-group">
+            <label>Home Address</label>
+            <textarea id="cust-address" rows="2" required placeholder="House #, Street, Area"></textarea>
+        </div>
+        
+        <button type="submit" class="confirm-btn">Confirm Order</button>
+    </form>
+</div>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get('id');
+    const quantity = params.get('qty');
+
+    if(productId && quantity) {
+        document.getElementById('order-summary').innerHTML = `
+            <strong>Product:</strong> ${productId.replace(/-/g, ' ')}<br>
+            <strong>Quantity:</strong> ${quantity} units<br>
+            <strong>Payment Method:</strong> Cash on Delivery
+        `;
+    }
+
+    function confirmOrder(event) {
+        event.preventDefault();
+        const name = document.getElementById('cust-name').value;
+        const city = document.getElementById('cust-city').value;
+        const address = document.getElementById('cust-address').value;
+        
+        alert(`Thank you, ${name}! Your order for ${quantity} ${productId.replace(/-/g, ' ')} has been confirmed.\n\nShipping to: ${address}, ${city}.\nWe will contact you shortly.`);
+        
+        window.location.href = "index.html";
+    }
+</script>
+
+</body>
+</html>

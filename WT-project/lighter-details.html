@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuminaScents | Lighter Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600&family=Tenor+Sans&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-creme: #fdfaf7;
+            --nude-blush: #efe3da; 
+            --muted-brown: #4a3b33;
+            --dusk-rose: #8c5e5e;
+            --white: #ffffff;
+            --border-light: rgba(74, 59, 51, 0.15);
+        }
+
+        body {
+            font-family: 'Tenor Sans', sans-serif;
+            background-color: var(--bg-creme);
+            color: var(--muted-brown);
+            margin: 0;
+            padding: 20px;
+            border: 12px solid var(--white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .back-nav { width: 100%; max-width: 1100px; margin-bottom: 20px; }
+        .back-nav a { text-decoration: none; color: var(--muted-brown); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .product-container {
+            max-width: 1100px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            margin-top: 40px;
+            opacity: 0;
+            animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.2s;
+        }
+
+        .image-viewport {
+            width: 100%;
+            aspect-ratio: 1/1.2;
+            background-color: var(--nude-blush);
+            background-size: cover;
+            background-position: center;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .info-panel h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        .price-tag {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: var(--dusk-rose);
+        }
+
+        .desc-text {
+            line-height: 1.8;
+            margin-bottom: 40px;
+            font-size: 16px;
+            border-left: 2px solid var(--nude-blush);
+            padding-left: 20px;
+        }
+
+        .button-group { display: flex; gap: 15px; margin-top: 30px; }
+
+        .action-btn {
+            background: var(--muted-brown);
+            color: white;
+            padding: 18px 45px;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 13px;
+            transition: all 0.4s ease;
+        }
+
+        .action-btn:hover { background: var(--dusk-rose); letter-spacing: 5px; }
+
+        .secondary-btn {
+            background: transparent;
+            color: var(--muted-brown);
+            border: 1px solid var(--muted-brown);
+            padding: 18px 35px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 12px;
+            transition: all 0.4s ease;
+        }
+
+        .secondary-btn:hover { background: var(--nude-blush); border-color: var(--dusk-rose); }
+    </style>
+</head>
+<body>
+
+    <nav class="back-nav">
+        <a href="lighters.html">← All Tools</a>
+    </nav>
+
+    <div class="product-container" id="main-content">
+        <div id="display-img" class="image-viewport"></div>
+
+        <div class="info-panel">
+            <h1 id="display-title">SELECT A TOOL</h1>
+            <div id="display-price" class="price-tag"></div>
+            
+            <div style="margin-bottom: 25px;">
+                <label for="quantity" style="font-size: 11px; letter-spacing: 2px; display: block; margin-bottom: 10px;">QUANTITY</label>
+                <input type="number" id="quantity" value="1" min="1" max="10" 
+                       style="padding: 12px; border: 1px solid var(--border-light); width: 60px; font-family: 'Tenor Sans';">
+                <span style="font-size: 11px; margin-left: 10px; color: #888;">(Max 10 units)</span>
+            </div>
+
+            <p id="display-desc" class="desc-text"></p>
+            
+            <div class="button-group">
+                <button class="action-btn" onclick="handleAddToBag()">Add to Bag</button>
+                <button class="secondary-btn" onclick="goToOrderForm()">Proceed to Purchase</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+    const toolData = {
+        "giant-match": { 
+            title: "Giant Match Lighter", price: "Rs. 1,200", img: "Giant Match Lighter.jpg", 
+            desc: "A statement piece for your coffee table. This oversized match-style lighter combines vintage novelty with modern reliability. Refillable and designed to reach deep into candle jars without singeing your fingertips." 
+        },
+        "safety-matches": { 
+            title: "Extra Long Safety Matches", price: "Rs. 450", img: "safety-matcher.jpg", 
+            desc: "Classic elegance in every strike. These 10-inch safety matches come in a beautifully branded box, perfect for lighting multi-wick candles or hard-to-reach wicks. A must-have for the serious candle enthusiast." 
+        },
+        "strawberry-lighter": { 
+            title: "3D-Strawberry Lighter", price: "Rs. 1,350", img: "3D STRAWBERRY LIGHTER.jpg", 
+            desc: "Add a playful pop to your lighting ritual. This 3D-molded strawberry lighter isn't just cute—it's high-performance. Features an adjustable flame and a textured grip for ease of use." 
+        },
+        "plasma-arc": { 
+            title: "Plasma Arc Lighter", price: "Rs. 2,200", img: "plasma.jpg", 
+            desc: "The future of lighting. This USB-rechargeable plasma lighter uses electricity instead of butane, making it windproof and eco-friendly. Finished in a soft blush tone to match your LuminaScents aesthetic." 
+        },
+        "kawai-lighter": { 
+            title: "Kawai Lighter", price: "Rs. 950", img: "kawai.jpg", 
+            desc: "Compact, sleek, and charming. Our Kawai collection lighters are designed for portability without sacrificing style. Reliable ignition in a variety of soft pastel finishes." 
+        },
+        "chilli-lighter": { 
+            title: "Chilli Lighter", price: "Rs. 800", img: "chilli.jpg", 
+            desc: "Spice up your candle collection. This vibrant chilli-shaped lighter is a fun addition to any kitchen or lounge. Features a slender design perfect for reaching into tapered candle holders." 
+        },
+        "snuffer-set": { 
+            title: "Matte Black Snuffer Set", price: "Rs. 1,100", img: "snuffer-set.jpg", 
+            desc: "The ultimate tool for candle care. Extinguish your candles safely and without smoke using our professional snuffer set. Crafted from heavy-duty metal with a sophisticated matte black finish." 
+        }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const currentId = params.get('id'); 
+    const currentProduct = toolData[currentId];
+
+    if (currentProduct) {
+        document.getElementById('display-title').innerText = currentProduct.title;
+        document.getElementById('display-price').innerText = currentProduct.price;
+        document.getElementById('display-desc').innerText = currentProduct.desc;
+        document.getElementById('display-img').style.backgroundImage = `url('${currentProduct.img}')`;
+        document.title = `${currentProduct.title} | LuminaScents`;
+    } else {
+        document.getElementById('main-content').innerHTML = `<h2 style="text-align:center; width:100%;">Tool Not Found</h2>`;
+    }
+
+    let isAddedToBag = false;
+
+    function handleAddToBag() {
+        const qty = document.getElementById('quantity').value;
+        if (qty < 1 || qty > 10) {
+            alert("Please select a quantity between 1 and 10.");
+            return;
+        }
+        isAddedToBag = true;
+        alert(`Successfully added ${qty} units of ${currentProduct.title} to your bag!`);
+    }
+
+    function goToOrderForm() {
+        if (!isAddedToBag) {
+            alert("Please add the product to your bag before proceeding to purchase.");
+            return;
+        }
+        const qty = document.getElementById('quantity').value;
+        window.location.href = `order-form.html?id=${currentId}&qty=${qty}`;
+    }
+</script>
+</body>
+</html>

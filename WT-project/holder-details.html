@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuminaScents | Holder Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600&family=Tenor+Sans&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-creme: #fdfaf7;
+            --nude-blush: #efe3da; 
+            --muted-brown: #4a3b33;
+            --dusk-rose: #8c5e5e;
+            --white: #ffffff;
+            --border-light: rgba(74, 59, 51, 0.15);
+        }
+
+        body {
+            font-family: 'Tenor Sans', sans-serif;
+            background-color: var(--bg-creme);
+            color: var(--muted-brown);
+            margin: 0;
+            padding: 20px;
+            border: 12px solid var(--white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .back-nav { width: 100%; max-width: 1100px; margin-bottom: 20px; }
+        .back-nav a { text-decoration: none; color: var(--muted-brown); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .product-container {
+            max-width: 1100px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            margin-top: 40px;
+            opacity: 0;
+            animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.2s;
+        }
+
+        .image-viewport {
+            width: 100%;
+            aspect-ratio: 1/1.2;
+            background-color: var(--nude-blush);
+            background-size: cover;
+            background-position: center;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .info-panel h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        .price-tag {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: var(--dusk-rose);
+        }
+
+        .desc-text {
+            line-height: 1.8;
+            margin-bottom: 40px;
+            font-size: 16px;
+            border-left: 2px solid var(--nude-blush);
+            padding-left: 20px;
+        }
+
+        .button-group { display: flex; gap: 15px; margin-top: 30px; }
+
+        .action-btn {
+            background: var(--muted-brown);
+            color: white;
+            padding: 18px 45px;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 13px;
+            transition: all 0.4s ease;
+        }
+
+        .action-btn:hover { background: var(--dusk-rose); letter-spacing: 5px; }
+
+        .secondary-btn {
+            background: transparent;
+            color: var(--muted-brown);
+            border: 1px solid var(--muted-brown);
+            padding: 18px 35px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 12px;
+            transition: all 0.4s ease;
+        }
+
+        .secondary-btn:hover { background: var(--nude-blush); border-color: var(--dusk-rose); }
+    </style>
+</head>
+<body>
+
+    <nav class="back-nav">
+        <a href="candle-holders.html">← Collections</a>
+    </nav>
+
+    <div class="product-container" id="main-content">
+        <div id="display-img" class="image-viewport"></div>
+
+        <div class="info-panel">
+            <h1 id="display-title">PLEASE SELECT A PRODUCT</h1>
+            <div id="display-price" class="price-tag"></div>
+            
+            <div style="margin-bottom: 25px;">
+                <label for="quantity" style="font-size: 11px; letter-spacing: 2px; display: block; margin-bottom: 10px;">QUANTITY</label>
+                <input type="number" id="quantity" value="1" min="1" max="10" 
+                       style="padding: 12px; border: 1px solid var(--border-light); width: 60px; font-family: 'Tenor Sans';">
+                <span style="font-size: 11px; margin-left: 10px; color: #888;">(Max 10 units)</span>
+            </div>
+
+            <p id="display-desc" class="desc-text"></p>
+            
+            <div class="button-group">
+                <button class="action-btn" onclick="handleAddToBag()">Add to Bag</button>
+                <button class="secondary-btn" onclick="goToOrderForm()">Proceed to Purchase</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+    const holderData = {
+        "gold-tulip": { 
+            title: "Gold Metal Tulip", price: "Rs. 2,500", img: "Tulip Candle-Holder.jpg", 
+            desc: "A breathtaking centerpiece inspired by the delicate silhouette of a blooming tulip. Forged from high-grade metal with a brushed gold finish, this sculptural holder perfectly cradles your favorite LuminaScents candle while adding an artistic touch to your mantel or dining table." 
+        },
+        "gold-bow": { 
+            title: "Gold Metal Bow Taper", price: "Rs. 1,850", img: "metal bow taper candle-holder.jpg", 
+            desc: "Add a touch of whimsical elegance to your evening with our Bow Taper holder. The dainty bow detail provides a feminine contrast to the structured metal, making it an ideal accessory for romantic dinners or bridal decor." 
+        },
+        "vintage-brass": { 
+            title: "Vintage Brass Taper", price: "Rs. 3,200", img: "Brass Taper candle-Holder.jpg", 
+            desc: "Heirloom-quality craftsmanship meets timeless design. This solid brass holder features a naturally aged patina that brings antique charm to modern interiors. Sturdy, heavy, and built to last for generations." 
+        },
+        "gold-cone": { 
+            title: "Gold Cone Shaped Holder", price: "Rs. 1,400", img: "gold cone candle-holder.jpg", 
+            desc: "Modern minimalism at its finest. The geometric cone base provides a stable and sleek platform for pillar candles. Its reflective gold surface amplifies the warm glow of the flame, creating stunning light patterns." 
+        },
+        "dusty-rose": { 
+            title: "Dusty Rose Taper", price: "Rs. 2,100", img: "Dusty Rose Taper .jpg", 
+            desc: "Softened elegance for a serene atmosphere. This ceramic taper holder is finished in a signature dusty rose glaze, designed to complement our floral candle collections perfectly." 
+        },
+        "ribbed-pillar": { 
+            title: "Ribbed Pillar Holder", price: "Rs. 1,600", img: "Pcs Small Pillar Candle holders).jpg", 
+            desc: "Featuring a contemporary ribbed texture, this pillar holder plays with shadows and light. It’s a versatile piece that adds architectural interest to any shelf or coffee table setup." 
+        },
+        "swans-holder": { 
+            title: "Swans Candle-Holder", price: "Rs. 1,900", img: "Swan Candle-Holder .jpg", 
+            desc: "Symbolizing grace and devotion, these intricately detailed swan holders are a conversation starter. The elegant curves create a poetic display when paired with soft candlelight." 
+        },
+        "metal-wire": { 
+            title: "Elegant Metal Wire", price: "Rs. 2,800", img: "Metal Wire Candle Holder.jpg", 
+            desc: "An airy, industrial-inspired design that allows light to spill out from every angle. This wireframe holder is perfect for those who love a clean, transparent aesthetic in their home styling." 
+        },
+        "marble-flower": { 
+            title: "Marble Mini Flower Holder", price: "Rs. 3,500", img: "marble.jpg", 
+            desc: "Carved from genuine Pakistani marble, each piece features unique veining and a smooth, cool-to-the-touch finish. Shaped like a subtle flower, it is the ultimate luxury accessory for small votives." 
+        },
+        "mold-concrete": { 
+            title: "Mold Concrete Holder", price: "Rs. 2,400", img: "mini mold.jpg", 
+            desc: "A celebration of raw materials. This concrete holder offers a brutalist edge to your decor, providing a grounded and earthy feel. Each piece is hand-cast, resulting in unique textures and character." 
+        }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const currentId = params.get('id'); 
+    const currentProduct = holderData[currentId];
+
+    if (currentProduct) {
+        document.getElementById('display-title').innerText = currentProduct.title;
+        document.getElementById('display-price').innerText = currentProduct.price;
+        document.getElementById('display-desc').innerText = currentProduct.desc;
+        document.getElementById('display-img').style.backgroundImage = `url('${currentProduct.img}')`;
+        document.title = `${currentProduct.title} | LuminaScents`;
+    } else {
+        document.getElementById('main-content').innerHTML = `
+            <div style="text-align:center; margin-top:100px; width:100%;">
+                <h2 style="font-family:'Cormorant Garamond'; font-size:48px;">Product Not Found</h2>
+                <a href="candle-holders.html" style="color:var(--dusk-rose); text-transform:uppercase; letter-spacing:2px; font-size:12px;">Return to Shop</a>
+            </div>`;
+    }
+
+    let isAddedToBag = false;
+
+    function handleAddToBag() {
+        const qty = document.getElementById('quantity').value;
+        if (qty < 1 || qty > 10) {
+            alert("Please select a quantity between 1 and 10.");
+            return;
+        }
+        isAddedToBag = true;
+        alert(`Successfully added ${qty} units of ${currentProduct.title} to your bag!`);
+    }
+
+    function goToOrderForm() {
+        if (!isAddedToBag) {
+            alert("Please add the product to your bag before proceeding to purchase.");
+            return;
+        }
+        const qty = document.getElementById('quantity').value;
+        window.location.href = `order-form.html?id=${currentId}&qty=${qty}`;
+    }
+</script>
+</body>
+</html>

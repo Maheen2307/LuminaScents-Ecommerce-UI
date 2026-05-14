@@ -1,0 +1,70 @@
+/* Styling based on image_4b4435.png palette */
+:root {
+    --bg-color: #f9f5f4; /* Background color from image */
+    --text-color: #bca4a0; /* Muted rose text color from image */
+    --accent-color: #a88d89;
+}
+
+body {
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+    font-family: 'Serif', 'Times New Roman', serif;
+    color: var(--text-color);
+}
+
+header {
+    padding: 30px;
+    text-align: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-color);
+    margin: 0 15px;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.nav-link.active {
+    font-weight: bold;
+    border-bottom: 1px solid var(--text-color);
+}
+
+.story-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 50px 20px;
+}
+
+.story-content {
+    max-width: 800px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.line-container p {
+    font-size: 1.1rem;
+    line-height: 2;
+    margin-bottom: 15px;
+    font-style: italic;
+    opacity: 0;
+    animation: fadeInLines 1.5s forwards;
+}
+
+/* Aesthetic transitions for the text */
+@keyframes fadeInLines {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Staggered animation for each line */
+.line-container p:nth-child(n) { animation-delay: 0.2s; }
