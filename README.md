@@ -4,7 +4,6 @@ A high-end, aesthetic frontend interface for LuminaScents, featuring a responsiv
 
 ## Features
 * **Aesthetic UI:** A sophisticated "dusk-rose" and "creme" color palette.
-* **Fully Responsive:** Optimized for all screen sizes (mobile, tablet, and desktop).
 * **Smooth Animations:** Custom scroll reveals and transition effects.
 * **Product Catalogs:** Dedicated sections for Scented Candles, Holders, and Accessories.
 * **Interactive Ordering:** Seamless navigation from product details to a custom order form.
